@@ -1,0 +1,9 @@
+extend type Group {
+  users: [User] @delegate(schema: "users", path: "usersById($fields.userIds")
+}
+
+extend type Query {
+  group: Group! @delegate(schema: "groups")
+  usersById(ids: [ID!]!): [User]! @delegate(schema: "users")
+  
+}
